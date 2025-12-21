@@ -1,6 +1,5 @@
 import {
   type Address,
-  type Hash,
   formatUnits,
   parseUnits,
   erc20Abi,

@@ -2,10 +2,9 @@ import {
   type Address,
   type Hash,
   parseEther,
-  formatEther,
 } from 'viem';
 import type { GiwaClient } from './GiwaClient';
-import type { BridgeTransaction, BridgeDirection, TransactionResult } from '../types';
+import type { BridgeTransaction, TransactionResult } from '../types';
 import { getContractAddresses } from '../constants/contracts';
 import { GiwaTransactionError } from '../utils/errors';
 

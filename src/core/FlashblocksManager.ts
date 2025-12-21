@@ -1,4 +1,4 @@
-import type { Hash, Address, Hex } from 'viem';
+import type { Hash } from 'viem';
 import type { GiwaClient } from './GiwaClient';
 import type { FlashblocksPreconfirmation, TransactionRequest, TransactionResult } from '../types';
 import { GiwaTransactionError } from '../utils/errors';

@@ -6,7 +6,6 @@ import {
 import type { GiwaClient } from './GiwaClient';
 import type { Attestation, AttestationType } from '../types';
 import { getContractAddresses, DOJANG_SCHEMAS } from '../constants/contracts';
-import { GiwaError } from '../utils/errors';
 
 // EAS ABI (simplified)
 const EAS_ABI = [
@@ -163,7 +162,7 @@ export class DojangManager {
    * Check if address has verified address attestation
    * @param address - Address to check
    */
-  async hasVerifiedAddress(address: Address): Promise<boolean> {
+  async hasVerifiedAddress(_address: Address): Promise<boolean> {
     // This would require indexing or events to find attestations by recipient
     // For now, return false as placeholder
     // In production, you'd use a subgraph or indexer
@@ -176,7 +175,7 @@ export class DojangManager {
    * @param address - Recipient address
    */
   async getAttestationsForAddress(
-    address: Address
+    _address: Address
   ): Promise<Attestation[]> {
     // Placeholder - would need subgraph/indexer
     return [];

@@ -1,9 +1,8 @@
 import {
   type Address,
-  type Hash,
   namehash,
-  normalize,
 } from 'viem';
+import { normalize } from 'viem/ens';
 import type { GiwaClient } from './GiwaClient';
 import type { GiwaId, TransactionResult } from '../types';
 import { getContractAddresses } from '../constants/contracts';

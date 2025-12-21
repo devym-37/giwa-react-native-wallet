@@ -7,14 +7,13 @@ import { wordlist } from '@scure/bip39/wordlists/english';
 import {
   privateKeyToAccount,
   type PrivateKeyAccount,
-  type Address,
-  type Hex,
+  HDKey,
 } from 'viem/accounts';
-import { HDKey } from 'viem/accounts';
+import { type Address, type Hex, bytesToHex } from 'viem';
 import type { ISecureStorage } from '../adapters/interfaces/ISecureStorage';
 import { STORAGE_KEYS } from '../adapters/interfaces/ISecureStorage';
 import type { GiwaWallet, WalletCreationResult, SecureStorageOptions } from '../types';
-import { GiwaWalletError, ErrorCodes } from '../utils/errors';
+import { GiwaWalletError } from '../utils/errors';
 
 // Default HD path for Ethereum
 const DEFAULT_HD_PATH = "m/44'/60'/0'/0/0";
@@ -266,7 +265,7 @@ export class WalletManager {
       const hdKey = HDKey.fromMasterSeed(seed);
       const derivedKey = hdKey.derive(DEFAULT_HD_PATH);
       if (derivedKey.privateKey) {
-        return `0x${Buffer.from(derivedKey.privateKey).toString('hex')}` as Hex;
+        return bytesToHex(derivedKey.privateKey) as Hex;
       }
     }
 
@@ -303,7 +302,7 @@ export class WalletManager {
       throw new GiwaWalletError('개인키를 유도할 수 없습니다.');
     }
 
-    const privateKey = `0x${Buffer.from(derivedKey.privateKey).toString('hex')}` as Hex;
+    const privateKey = bytesToHex(derivedKey.privateKey) as Hex;
     return privateKeyToAccount(privateKey);
   }
 }
