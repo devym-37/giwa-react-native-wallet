@@ -12,25 +12,16 @@ export interface UseFaucetReturn {
   error: Error | null;
 }
 
-/**
- * Hook for testnet faucet operations
- *
- * 최적화:
- * - useGiwaManagers, useGiwaWalletContext 분리 사용
- * - useRef로 client 참조 안정화
- * - 반환 객체 useMemo로 메모이제이션
- */
+
 export function useFaucet(): UseFaucetReturn {
   const { client } = useGiwaManagers();
   const { wallet } = useGiwaWalletContext();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<Error | null>(null);
 
-  // client를 ref로 저장
   const clientRef = useRef(client);
   clientRef.current = client;
 
-  // wallet address를 ref로 저장
   const walletAddressRef = useRef(wallet?.address);
   walletAddressRef.current = wallet?.address;
 
@@ -77,7 +68,6 @@ export function useFaucet(): UseFaucetReturn {
     return FAUCET_URL;
   }, []);
 
-  // 반환 객체 메모이제이션
   return useMemo(() => ({
     requestFaucet,
     getFaucetUrl,
