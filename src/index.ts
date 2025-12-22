@@ -25,11 +25,9 @@ export type { IManager, ITransactionManager } from './core/base/BaseManager';
 export {
   GiwaProvider,
   useGiwaContext,
-  // 최적화된 개별 Context hooks (리렌더링 최소화)
   useGiwaManagers,
   useGiwaWalletContext,
   useGiwaState,
-  // Context exports (advanced usage)
   ManagerContext,
   WalletContext,
   StateContext,
