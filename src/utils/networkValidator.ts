@@ -1,7 +1,7 @@
 /**
- * 네트워크 검증 유틸리티
+ * Network validation utilities
  *
- * TBD 컨트랙트 주소 감지 및 기능 가용성 확인
+ * TBD contract address detection and feature availability checking
  */
 import type { Address } from 'viem';
 import { CONTRACT_ADDRESSES, DOJANG_SCHEMAS } from '../constants/contracts';
@@ -15,21 +15,21 @@ import type {
 } from '../types';
 
 /**
- * TBD 주소 상수
+ * TBD address constants
  */
 const ZERO_ADDRESS: Address = '0x0000000000000000000000000000000000000000';
 const ZERO_BYTES32 =
   '0x0000000000000000000000000000000000000000000000000000000000000000';
 
 /**
- * 주소가 TBD(placeholder)인지 확인
+ * Check if address is TBD (placeholder)
  */
 export function isTbdAddress(address: Address): boolean {
   return address === ZERO_ADDRESS;
 }
 
 /**
- * 특정 네트워크의 특정 기능 가용성 확인
+ * Check feature availability for a specific network
  */
 export function getFeatureAvailability(
   network: NetworkType,
@@ -124,7 +124,7 @@ export function getFeatureAvailability(
 }
 
 /**
- * 네트워크의 모든 기능 가용성 조회
+ * Get all feature availabilities for a network
  */
 export function getAllFeatureAvailabilities(
   network: NetworkType
@@ -148,13 +148,13 @@ export function getAllFeatureAvailabilities(
 }
 
 /**
- * 네트워크 경고 목록 생성
+ * Generate network warning list
  */
 export function getNetworkWarnings(network: NetworkType): NetworkWarning[] {
   const warnings: NetworkWarning[] = [];
   const features = getAllFeatureAvailabilities(network);
 
-  // mainnet 준비 상태 경고
+  // Mainnet readiness warning
   if (network === 'mainnet') {
     const unavailableCount = Object.values(features).filter(
       (f) => f.status === 'unavailable'
@@ -169,7 +169,7 @@ export function getNetworkWarnings(network: NetworkType): NetworkWarning[] {
     }
   }
 
-  // 개별 기능 경고
+  // Individual feature warnings
   Object.values(features).forEach((feature) => {
     if (feature.status === 'unavailable' && feature.reason) {
       warnings.push({
@@ -185,7 +185,7 @@ export function getNetworkWarnings(network: NetworkType): NetworkWarning[] {
 }
 
 /**
- * 전체 네트워크 상태 조회
+ * Get overall network status
  */
 export function getNetworkStatus(network: NetworkType): NetworkStatus {
   const features = getAllFeatureAvailabilities(network);
@@ -216,7 +216,7 @@ export function getNetworkStatus(network: NetworkType): NetworkStatus {
 }
 
 /**
- * 콘솔에 네트워크 경고 출력
+ * Log network warnings to console
  */
 export function logNetworkWarnings(network: NetworkType): void {
   const warnings = getNetworkWarnings(network);
