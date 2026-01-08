@@ -1,6 +1,10 @@
 // @giwa/react-native-wallet
 // GIWA Chain SDK for React Native - Expo and React Native CLI compatible
 
+// Crypto polyfill - MUST be first before any crypto operations
+// This ensures crypto.getRandomValues is available for @scure/bip39 and viem
+import 'react-native-get-random-values';
+
 // Types
 export * from './types';
 
@@ -66,7 +70,6 @@ export { AdapterFactory, getAdapterFactory } from './adapters/AdapterFactory';
 export type { Adapters, AdapterFactoryOptions } from './adapters/AdapterFactory';
 export type { ISecureStorage } from './adapters/interfaces/ISecureStorage';
 export type { IBiometricAuth } from './adapters/interfaces/IBiometricAuth';
-export type { IClipboard } from './adapters/interfaces/IClipboard';
 export { STORAGE_KEYS } from './adapters/interfaces/ISecureStorage';
 export { BIOMETRIC_PROMPTS } from './adapters/interfaces/IBiometricAuth';
 
@@ -97,3 +100,15 @@ export {
   isTbdAddress,
   logNetworkWarnings,
 } from './utils/networkValidator';
+
+// Utils - Viem re-exports (for convenience)
+// These are commonly used utilities that apps can import directly from the SDK
+// without needing to install viem separately
+export {
+  parseEther,
+  formatEther,
+  parseUnits,
+  formatUnits,
+  isAddress,
+  getAddress,
+} from 'viem';
