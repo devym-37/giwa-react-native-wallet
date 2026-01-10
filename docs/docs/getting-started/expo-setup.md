@@ -9,7 +9,14 @@ This guide explains how to set up the GIWA SDK in an Expo project.
 ## Installation
 
 ```bash
+# npx (Expo auto-detects your package manager)
 npx expo install @giwa/react-native-wallet expo-secure-store
+
+# pnpm
+pnpm dlx expo install @giwa/react-native-wallet expo-secure-store
+
+# yarn
+yarn dlx expo install @giwa/react-native-wallet expo-secure-store
 ```
 
 ## Basic Setup
@@ -78,7 +85,14 @@ export default function RootLayout() {
 To use biometric authentication, install the additional package:
 
 ```bash
+# npx
 npx expo install expo-local-authentication
+
+# pnpm
+pnpm dlx expo install expo-local-authentication
+
+# yarn
+yarn dlx expo install expo-local-authentication
 ```
 
 ### app.json Configuration
@@ -104,10 +118,17 @@ Most features work in Expo Go, but some native features are only available in de
 Creating a development build:
 
 ```bash
+# Using npx
 npx expo prebuild
-npx expo run:ios
-# or
-npx expo run:android
+npx expo run:ios  # or npx expo run:android
+
+# Using pnpm
+pnpm dlx expo prebuild
+pnpm dlx expo run:ios  # or pnpm dlx expo run:android
+
+# Using yarn
+yarn dlx expo prebuild
+yarn dlx expo run:ios  # or yarn dlx expo run:android
 ```
 
 ## Troubleshooting
@@ -115,13 +136,27 @@ npx expo run:android
 ### Metro Bundler Cache Issues
 
 ```bash
+# npx
 npx expo start --clear
+
+# pnpm
+pnpm dlx expo start --clear
+
+# yarn
+yarn dlx expo start --clear
 ```
 
 ### Dependency Conflicts
 
 ```bash
+# npx
 npx expo install --fix
+
+# pnpm
+pnpm dlx expo install --fix
+
+# yarn
+yarn dlx expo install --fix
 ```
 
 ## Next Steps

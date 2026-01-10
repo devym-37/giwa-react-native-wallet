@@ -9,14 +9,30 @@ sidebar_position: 1
 ## Expo Projects
 
 ```bash
+# npx (Expo auto-detects your package manager)
 npx expo install @giwa/react-native-wallet expo-secure-store
+
+# pnpm
+pnpm dlx expo install @giwa/react-native-wallet expo-secure-store
+
+# yarn
+yarn dlx expo install @giwa/react-native-wallet expo-secure-store
 ```
 
 ## React Native CLI Projects
 
 ```bash
+# npm
 npm install @giwa/react-native-wallet react-native-keychain
 
+# yarn
+yarn add @giwa/react-native-wallet react-native-keychain
+
+# pnpm
+pnpm add @giwa/react-native-wallet react-native-keychain
+```
+
+```bash
 # iOS additional setup
 cd ios && pod install && cd ..
 ```
