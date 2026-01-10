@@ -18,15 +18,17 @@ GIWA Chain SDK for React Native - Expo and React Native CLI compatible
 ### Expo
 
 ```bash
-# npx (Expo auto-detects your package manager)
-npx expo install @giwa/react-native-wallet expo-secure-store
-
-# pnpm
-pnpm dlx expo install @giwa/react-native-wallet expo-secure-store
+# npm
+npm install @giwa/react-native-wallet expo-secure-store
 
 # yarn
-yarn dlx expo install @giwa/react-native-wallet expo-secure-store
+yarn add @giwa/react-native-wallet expo-secure-store
+
+# pnpm
+pnpm add @giwa/react-native-wallet expo-secure-store
 ```
+
+> **Tip**: You can also use `npx expo install` for automatic Expo SDK version compatibility.
 
 ### React Native CLI
 
