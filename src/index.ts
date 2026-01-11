@@ -51,19 +51,9 @@ export { useGiwaId } from './hooks/useGiwaId';
 export { useDojang } from './hooks/useDojang';
 export { useFaucet } from './hooks/useFaucet';
 export { useNetworkInfo } from './hooks/useNetworkInfo';
+export { useBiometricAuth } from './hooks/useBiometricAuth';
 export type { UseNetworkInfoReturn } from './hooks/useNetworkInfo';
-
-// Hooks - Shared (for custom hook development)
-export { useAsyncAction, useAsyncActions } from './hooks/shared/useAsyncAction';
-export { useAsyncQuery } from './hooks/shared/useAsyncQuery';
-export type {
-  AsyncActionState,
-  UseAsyncActionReturn,
-} from './hooks/shared/useAsyncAction';
-export type {
-  UseAsyncQueryOptions,
-  UseAsyncQueryReturn,
-} from './hooks/shared/useAsyncQuery';
+export type { UseBiometricAuthReturn, UseBiometricAuthOptions } from './hooks/useBiometricAuth';
 
 // Hooks - Shared (for custom hook development)
 export { useAsyncAction, useAsyncActions } from './hooks/shared/useAsyncAction';
