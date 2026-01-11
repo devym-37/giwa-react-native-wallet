@@ -9,7 +9,9 @@ export { useGiwaId } from './useGiwaId';
 export { useDojang } from './useDojang';
 export { useFaucet } from './useFaucet';
 export { useNetworkInfo } from './useNetworkInfo';
+export { useBiometricAuth } from './useBiometricAuth';
 export type { UseNetworkInfoReturn } from './useNetworkInfo';
+export type { UseBiometricAuthReturn, UseBiometricAuthOptions } from './useBiometricAuth';
 
 // Shared hooks (for custom hook development)
 export { useAsyncAction, useAsyncActions } from './shared/useAsyncAction';
