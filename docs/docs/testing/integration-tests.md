@@ -218,7 +218,7 @@ describe('GIWA ID Flow', () => {
 
     // Check name availability
     await act(async () => {
-      const available = await giwaIdResult.current.isNameAvailable(
+      const available = await giwaIdResult.current.isAvailable(
         'random-test-name-12345'
       );
       expect(typeof available).toBe('boolean');
@@ -324,17 +324,12 @@ describe('Full Wallet Flow', () => {
     });
 
     // === 3. Request faucet (testnet) ===
+    // Note: requestFaucet() opens browser to faucet website
     const { result: faucetResult } = renderHook(() => useFaucet(), { wrapper });
 
-    await act(async () => {
-      try {
-        const result = await faucetResult.current.requestFaucet();
-        expect(result.txHash).toMatch(/^0x[a-fA-F0-9]{64}$/);
-      } catch (error) {
-        // May be rate limited
-        console.log('Faucet rate limited');
-      }
-    });
+    // Verify faucet URL is available
+    const faucetUrl = faucetResult.current.getFaucetUrl();
+    expect(faucetUrl).toContain('faucet.giwa.io');
 
     // === 4. Disconnect wallet ===
     await act(async () => {
