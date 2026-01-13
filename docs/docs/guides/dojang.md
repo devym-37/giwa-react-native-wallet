@@ -34,9 +34,11 @@ function DojangScreen() {
   const {
     getAttestation,       // Get attestation by UID
     isAttestationValid,   // Check if attestation is valid
+    hasVerifiedAddress,   // Check if address has verified attestation
     getVerifiedBalance,   // Get verified balance data
-    getSchema,            // Get schema information
     isLoading,
+    isInitializing,
+    error,
   } = useDojang();
 
   // ...
@@ -102,18 +104,20 @@ const handleGetBalance = async () => {
 };
 ```
 
-## Get Schema Information
+## Check Verified Address
+
+Check if a wallet address has a verified attestation:
 
 ```tsx
-const handleGetSchema = async () => {
-  const schemaUid = '0x...';
+const handleCheckVerified = async () => {
+  const address = '0x742d35Cc6634C0532925a3b844Bc9e7595f...';
 
-  const schema = await getSchema(schemaUid);
+  const isVerified = await hasVerifiedAddress(address);
 
-  if (schema) {
-    console.log('Schema UID:', schema.uid);
-    console.log('Schema:', schema.schema);
-    console.log('Revocable:', schema.revocable);
+  if (isVerified) {
+    console.log('Address is verified');
+  } else {
+    console.log('Address is not verified');
   }
 };
 ```
@@ -126,7 +130,14 @@ import { View, Text, TextInput, Button, Alert } from 'react-native';
 import { useDojang } from '@giwa/react-native-wallet';
 
 export function DojangScreen() {
-  const { getAttestation, isAttestationValid, isLoading } = useDojang();
+  const {
+    getAttestation,
+    isAttestationValid,
+    hasVerifiedAddress,
+    isLoading,
+    isInitializing,
+    error,
+  } = useDojang();
   const [uid, setUid] = useState('');
   const [attestation, setAttestation] = useState(null);
 
@@ -162,9 +173,17 @@ export function DojangScreen() {
     }
   };
 
+  if (isInitializing) {
+    return <Text>Loading...</Text>;
+  }
+
   return (
     <View style={{ padding: 20 }}>
       <Text style={{ fontSize: 20, marginBottom: 20 }}>Dojang Attestations</Text>
+
+      {error && (
+        <Text style={{ color: 'red', marginBottom: 10 }}>{error.message}</Text>
+      )}
 
       <Text style={{ marginBottom: 5 }}>Attestation UID</Text>
       <TextInput
@@ -221,7 +240,14 @@ export function DojangScreen() {
 ### Check if Address is Verified
 
 ```tsx
-const checkVerifiedAddress = async (attestationUid: string) => {
+const checkVerifiedAddress = async (address: string) => {
+  // Simple check using hasVerifiedAddress
+  const isVerified = await hasVerifiedAddress(address);
+  return isVerified;
+};
+
+// Or with detailed information
+const checkVerifiedAddressDetailed = async (attestationUid: string) => {
   const attestation = await getAttestation(attestationUid);
 
   if (!attestation) {

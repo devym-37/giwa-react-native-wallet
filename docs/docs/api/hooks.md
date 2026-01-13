@@ -190,21 +190,21 @@ See: [GIWA Bridge Documentation](https://docs.giwa.io/tools/bridges)
 import { useBridge } from '@giwa/react-native-wallet';
 
 const {
-  withdrawETH,       // (amount: string, to?: Address) => Promise<TransactionResult>
-  withdrawToken,     // (tokenAddress: Address, amount: bigint, to?: Address) => Promise<TransactionResult>
+  withdrawETH,       // (amount: string, to?: Address) => Promise<Hash>
+  withdrawToken,     // (l2TokenAddress: Address, amount: bigint, to?: Address) => Promise<Hash>
   getPendingTransactions, // () => BridgeTransaction[]
+  getTransaction,    // (hash: Hash) => BridgeTransaction | undefined
   getEstimatedWithdrawalTime, // () => number (seconds)
   isLoading,         // boolean
+  isInitializing,    // boolean
+  error,             // Error | null
 } = useBridge();
 ```
 
 ### Types
 
 ```tsx
-interface TransactionResult {
-  hash: string;
-  wait: () => Promise<TransactionReceipt>;
-}
+type Hash = `0x${string}`;
 
 interface BridgeTransaction {
   direction: 'withdraw';
@@ -219,8 +219,12 @@ interface BridgeTransaction {
 
 ```tsx
 // Withdraw 0.1 ETH to L1
-const { hash, wait } = await withdrawETH('0.1');
-const receipt = await wait();
+const hash = await withdrawETH('0.1');
+console.log('L2 TX Hash:', hash);
+
+// Track transaction status
+const tx = getTransaction(hash);
+console.log('Status:', tx?.status);
 
 // Estimated withdrawal time (~7 days for OP Stack)
 const time = getEstimatedWithdrawalTime(); // 604800 seconds
@@ -274,7 +278,7 @@ interface Preconfirmation {
 GIWA ID (ENS-based Naming) Hook
 
 :::info Registration
-GIWA ID (up.id) registration is only available through Upbit's Verified Address service. This SDK provides read-only access for resolving names and addresses.
+GIWA ID (up.id) registration is only available through Upbit's Verified Address service. This SDK provides name resolution and text record management.
 
 See: [GIWA ID Documentation](https://docs.giwa.io/giwa-ecosystem/giwa-id)
 :::
@@ -283,12 +287,15 @@ See: [GIWA ID Documentation](https://docs.giwa.io/giwa-ecosystem/giwa-id)
 import { useGiwaId } from '@giwa/react-native-wallet';
 
 const {
-  resolveAddress,    // (name: string) => Promise<Address | null>
+  resolveAddress,    // (giwaId: string) => Promise<Address | null>
   resolveName,       // (address: Address) => Promise<string | null>
-  getGiwaId,         // (name: string) => Promise<GiwaId | null>
-  getTextRecord,     // (name: string, key: string) => Promise<string | null>
-  isAvailable,       // (name: string) => Promise<boolean>
+  getGiwaId,         // (giwaId: string) => Promise<GiwaId | null>
+  getTextRecord,     // (giwaId: string, key: string) => Promise<string | null>
+  setTextRecord,     // (giwaId: string, key: string, value: string) => Promise<Hash>
+  isAvailable,       // (giwaId: string) => Promise<boolean>
   isLoading,         // boolean
+  isInitializing,    // boolean
+  error,             // Error | null
 } = useGiwaId();
 ```
 
@@ -313,6 +320,9 @@ const name = await resolveName('0x1234...');
 
 // Get avatar
 const avatar = await getTextRecord('alice', 'avatar');
+
+// Set text record (requires ownership)
+const hash = await setTextRecord('alice', 'description', 'My profile');
 ```
 
 ---
@@ -333,9 +343,11 @@ import { useDojang } from '@giwa/react-native-wallet';
 const {
   getAttestation,       // (uid: Hex) => Promise<Attestation | null>
   isAttestationValid,   // (uid: Hex) => Promise<boolean>
+  hasVerifiedAddress,   // (address: Address) => Promise<boolean>
   getVerifiedBalance,   // (uid: Hex) => Promise<VerifiedBalance | null>
-  getSchema,            // (schemaUid: Hex) => Promise<Schema | null>
   isLoading,            // boolean
+  isInitializing,       // boolean
+  error,                // Error | null
 } = useDojang();
 ```
 
@@ -383,6 +395,10 @@ const attestation = await getAttestation('0x1234...');
 if (attestation && !attestation.revoked) {
   console.log('Attester:', attestation.attester);
 }
+
+// Check if address has verified attestation
+const hasVerified = await hasVerifiedAddress('0xabcd...');
+console.log('Is verified:', hasVerified);
 ```
 
 ---

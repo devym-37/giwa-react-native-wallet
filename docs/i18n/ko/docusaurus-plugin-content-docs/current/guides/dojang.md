@@ -34,9 +34,11 @@ function DojangScreen() {
   const {
     getAttestation,       // UID로 증명 조회
     isAttestationValid,   // 증명 유효성 확인
+    hasVerifiedAddress,   // 주소에 인증된 증명이 있는지 확인
     getVerifiedBalance,   // 검증된 잔액 데이터 조회
-    getSchema,            // 스키마 정보 조회
     isLoading,
+    isInitializing,
+    error,
   } = useDojang();
 
   // ...
@@ -102,18 +104,20 @@ const handleGetBalance = async () => {
 };
 ```
 
-## Get Schema Information
+## Check Verified Address
+
+지갑 주소에 인증된 증명이 있는지 확인:
 
 ```tsx
-const handleGetSchema = async () => {
-  const schemaUid = '0x...';
+const handleCheckVerified = async () => {
+  const address = '0x742d35Cc6634C0532925a3b844Bc9e7595f...';
 
-  const schema = await getSchema(schemaUid);
+  const isVerified = await hasVerifiedAddress(address);
 
-  if (schema) {
-    console.log('Schema UID:', schema.uid);
-    console.log('Schema:', schema.schema);
-    console.log('Revocable:', schema.revocable);
+  if (isVerified) {
+    console.log('주소가 인증되었습니다');
+  } else {
+    console.log('주소가 인증되지 않았습니다');
   }
 };
 ```
@@ -126,7 +130,14 @@ import { View, Text, TextInput, Button, Alert } from 'react-native';
 import { useDojang } from '@giwa/react-native-wallet';
 
 export function DojangScreen() {
-  const { getAttestation, isAttestationValid, isLoading } = useDojang();
+  const {
+    getAttestation,
+    isAttestationValid,
+    hasVerifiedAddress,
+    isLoading,
+    isInitializing,
+    error,
+  } = useDojang();
   const [uid, setUid] = useState('');
   const [attestation, setAttestation] = useState(null);
 
@@ -162,9 +173,17 @@ export function DojangScreen() {
     }
   };
 
+  if (isInitializing) {
+    return <Text>Loading...</Text>;
+  }
+
   return (
     <View style={{ padding: 20 }}>
       <Text style={{ fontSize: 20, marginBottom: 20 }}>Dojang Attestations</Text>
+
+      {error && (
+        <Text style={{ color: 'red', marginBottom: 10 }}>{error.message}</Text>
+      )}
 
       <Text style={{ marginBottom: 5 }}>Attestation UID</Text>
       <TextInput
@@ -221,7 +240,14 @@ export function DojangScreen() {
 ### Check if Address is Verified
 
 ```tsx
-const checkVerifiedAddress = async (attestationUid: string) => {
+const checkVerifiedAddress = async (address: string) => {
+  // hasVerifiedAddress로 간단하게 확인
+  const isVerified = await hasVerifiedAddress(address);
+  return isVerified;
+};
+
+// 또는 상세 정보와 함께
+const checkVerifiedAddressDetailed = async (attestationUid: string) => {
   const attestation = await getAttestation(attestationUid);
 
   if (!attestation) {

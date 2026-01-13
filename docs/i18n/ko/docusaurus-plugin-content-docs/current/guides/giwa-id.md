@@ -7,7 +7,7 @@ sidebar_position: 6
 이 가이드에서는 ENS 기반 네이밍 서비스인 GIWA ID (up.id) 사용 방법을 설명합니다.
 
 :::info Registration
-GIWA ID 등록은 Upbit의 Verified Address 서비스를 통해서만 가능합니다. 이 SDK는 이름과 주소를 조회하기 위한 읽기 전용 접근을 제공합니다.
+GIWA ID 등록은 Upbit의 Verified Address 서비스를 통해서만 가능합니다. 이 SDK는 이름 해석 및 텍스트 레코드 관리 기능을 제공합니다.
 
 참고: [GIWA ID 문서](https://docs.giwa.io/giwa-ecosystem/giwa-id)
 :::
@@ -38,8 +38,11 @@ function GiwaIdScreen() {
     resolveName,        // Address → GIWA ID
     getGiwaId,          // Get full GIWA ID info
     getTextRecord,      // Get profile records (avatar, etc.)
+    setTextRecord,      // Set profile records (requires ownership)
     isAvailable,        // Check name availability
     isLoading,
+    isInitializing,
+    error,
   } = useGiwaId();
 
   // ...
@@ -102,6 +105,28 @@ const description = await getTextRecord('alice', 'description');
 const url = await getTextRecord('alice', 'url');
 ```
 
+## Set Text Records
+
+소유한 GIWA ID의 텍스트 레코드 업데이트:
+
+```tsx
+const handleSetRecord = async () => {
+  try {
+    // description 설정 (GIWA ID 소유 필요)
+    const hash = await setTextRecord('alice', 'description', 'My profile description');
+    console.log('Transaction hash:', hash);
+
+    // 아바타 URL 설정
+    await setTextRecord('alice', 'avatar', 'https://example.com/avatar.png');
+
+    // 웹사이트 URL 설정
+    await setTextRecord('alice', 'url', 'https://mywebsite.com');
+  } catch (error) {
+    console.error('Failed to set record:', error.message);
+  }
+};
+```
+
 ## Check Name Availability
 
 ```tsx
@@ -127,7 +152,14 @@ import { useGiwaId, useGiwaWallet } from '@giwa/react-native-wallet';
 
 export function GiwaIdScreen() {
   const { wallet } = useGiwaWallet();
-  const { resolveAddress, resolveName, getGiwaId, isLoading } = useGiwaId();
+  const {
+    resolveAddress,
+    resolveName,
+    getGiwaId,
+    isLoading,
+    isInitializing,
+    error,
+  } = useGiwaId();
 
   const [myGiwaId, setMyGiwaId] = useState<string | null>(null);
   const [searchInput, setSearchInput] = useState('');
@@ -153,9 +185,17 @@ export function GiwaIdScreen() {
     );
   };
 
+  if (isInitializing) {
+    return <Text>Loading...</Text>;
+  }
+
   return (
     <View style={{ padding: 20 }}>
       <Text style={{ fontSize: 20, marginBottom: 20 }}>GIWA ID</Text>
+
+      {error && (
+        <Text style={{ color: 'red', marginBottom: 10 }}>{error.message}</Text>
+      )}
 
       {/* 내 GIWA ID */}
       <View style={{ marginBottom: 30 }}>

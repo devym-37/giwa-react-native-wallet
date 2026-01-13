@@ -22,8 +22,11 @@ function BridgeScreen() {
     withdrawETH,       // L2 → L1 ETH 출금
     withdrawToken,     // L2 → L1 토큰 출금
     getPendingTransactions,
+    getTransaction,    // 해시로 트랜잭션 추적
     getEstimatedWithdrawalTime,
     isLoading,
+    isInitializing,
+    error,
   } = useBridge();
 
   // ...
@@ -37,13 +40,13 @@ GIWA Chain에서 이더리움 메인넷으로 ETH 전송:
 ```tsx
 const handleWithdrawETH = async () => {
   try {
-    const { hash, wait } = await withdrawETH('0.1'); // 0.1 ETH
+    const hash = await withdrawETH('0.1'); // 0.1 ETH
 
     console.log('L2 TX Hash:', hash);
 
-    // 확인 대기
-    const receipt = await wait();
-    console.log('Confirmed in block:', receipt.blockNumber);
+    // 트랜잭션 상태 추적
+    const tx = getTransaction(hash);
+    console.log('Status:', tx?.status);
 
     // 참고: Challenge Period로 인해 전체 출금에 약 7일 소요
   } catch (error) {
@@ -56,7 +59,7 @@ const handleWithdrawETH = async () => {
 
 ```tsx
 // 특정 L1 주소로 출금
-const { hash } = await withdrawETH('0.1', '0x1234...abcd');
+const hash = await withdrawETH('0.1', '0x1234...abcd');
 ```
 
 ## Token Withdrawal
@@ -69,12 +72,13 @@ const handleWithdrawToken = async () => {
   const amount = 100000000000000000000n; // 100 토큰 (wei 단위)
 
   try {
-    const { hash, wait } = await withdrawToken(l2TokenAddress, amount);
+    const hash = await withdrawToken(l2TokenAddress, amount);
 
     console.log('L2 TX Hash:', hash);
 
-    const receipt = await wait();
-    console.log('Confirmed:', receipt.status);
+    // 트랜잭션 상태 추적
+    const tx = getTransaction(hash);
+    console.log('Status:', tx?.status);
   } catch (error) {
     console.error('Withdrawal failed:', error.message);
   }
@@ -118,7 +122,13 @@ import { useBridge, useBalance } from '@giwa/react-native-wallet';
 
 export function BridgeScreen() {
   const [amount, setAmount] = useState('');
-  const { withdrawETH, getEstimatedWithdrawalTime, isLoading } = useBridge();
+  const {
+    withdrawETH,
+    getEstimatedWithdrawalTime,
+    isLoading,
+    isInitializing,
+    error,
+  } = useBridge();
   const { formattedBalance } = useBalance();
 
   const handleWithdraw = async () => {
@@ -135,7 +145,7 @@ export function BridgeScreen() {
           text: 'Confirm',
           onPress: async () => {
             try {
-              const { hash } = await withdrawETH(amount);
+              const hash = await withdrawETH(amount);
               Alert.alert('Withdrawal Started', `TX: ${hash}`);
             } catch (error) {
               Alert.alert('Error', error.message);
@@ -150,9 +160,17 @@ export function BridgeScreen() {
     Linking.openURL('https://superbridge.app');
   };
 
+  if (isInitializing) {
+    return <Text>Loading...</Text>;
+  }
+
   return (
     <View style={{ padding: 20 }}>
       <Text style={{ fontSize: 18, marginBottom: 10 }}>Bridge</Text>
+
+      {error && (
+        <Text style={{ color: 'red', marginBottom: 10 }}>{error.message}</Text>
+      )}
 
       {/* Deposit Link */}
       <Button
@@ -182,7 +200,7 @@ export function BridgeScreen() {
       />
 
       <Text style={{ color: 'orange', marginBottom: 10, fontSize: 12 }}>
-        ⚠️ 출금에는 약 7일이 소요됩니다
+        출금에는 약 7일이 소요됩니다
       </Text>
 
       <Button

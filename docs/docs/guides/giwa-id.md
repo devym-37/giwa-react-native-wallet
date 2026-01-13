@@ -7,7 +7,7 @@ sidebar_position: 6
 This guide explains how to use GIWA ID (up.id), an ENS-based naming service.
 
 :::info Registration
-GIWA ID registration is only available through Upbit's Verified Address service. This SDK provides read-only access for resolving names and addresses.
+GIWA ID registration is only available through Upbit's Verified Address service. This SDK provides name resolution and text record management.
 
 See: [GIWA ID Documentation](https://docs.giwa.io/giwa-ecosystem/giwa-id)
 :::
@@ -38,8 +38,11 @@ function GiwaIdScreen() {
     resolveName,        // Address → GIWA ID
     getGiwaId,          // Get full GIWA ID info
     getTextRecord,      // Get profile records (avatar, etc.)
+    setTextRecord,      // Set profile records (requires ownership)
     isAvailable,        // Check name availability
     isLoading,
+    isInitializing,
+    error,
   } = useGiwaId();
 
   // ...
@@ -102,6 +105,28 @@ const description = await getTextRecord('alice', 'description');
 const url = await getTextRecord('alice', 'url');
 ```
 
+## Set Text Records
+
+Update text records for a GIWA ID you own:
+
+```tsx
+const handleSetRecord = async () => {
+  try {
+    // Set description (requires ownership of the GIWA ID)
+    const hash = await setTextRecord('alice', 'description', 'My profile description');
+    console.log('Transaction hash:', hash);
+
+    // Set avatar URL
+    await setTextRecord('alice', 'avatar', 'https://example.com/avatar.png');
+
+    // Set website URL
+    await setTextRecord('alice', 'url', 'https://mywebsite.com');
+  } catch (error) {
+    console.error('Failed to set record:', error.message);
+  }
+};
+```
+
 ## Check Name Availability
 
 ```tsx
@@ -127,7 +152,14 @@ import { useGiwaId, useGiwaWallet } from '@giwa/react-native-wallet';
 
 export function GiwaIdScreen() {
   const { wallet } = useGiwaWallet();
-  const { resolveAddress, resolveName, getGiwaId, isLoading } = useGiwaId();
+  const {
+    resolveAddress,
+    resolveName,
+    getGiwaId,
+    isLoading,
+    isInitializing,
+    error,
+  } = useGiwaId();
 
   const [myGiwaId, setMyGiwaId] = useState<string | null>(null);
   const [searchInput, setSearchInput] = useState('');
@@ -153,9 +185,17 @@ export function GiwaIdScreen() {
     );
   };
 
+  if (isInitializing) {
+    return <Text>Loading...</Text>;
+  }
+
   return (
     <View style={{ padding: 20 }}>
       <Text style={{ fontSize: 20, marginBottom: 20 }}>GIWA ID</Text>
+
+      {error && (
+        <Text style={{ color: 'red', marginBottom: 10 }}>{error.message}</Text>
+      )}
 
       {/* My GIWA ID */}
       <View style={{ marginBottom: 30 }}>
