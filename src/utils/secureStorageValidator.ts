@@ -20,7 +20,7 @@ export async function validateSecureStorage(
  */
 export async function isExpoEnvironment(): Promise<boolean> {
   try {
-    // @ts-ignore - expo-constants is an optional peer dependency
+    // @ts-expect-error - expo-constants is an optional peer dependency
     const expoConstants = await import('expo-constants').catch(() => null);
     if (!expoConstants) return false;
     return expoConstants?.default?.expoConfig !== undefined;
@@ -35,6 +35,7 @@ export async function isExpoEnvironment(): Promise<boolean> {
  */
 export async function isExpoSecureStoreAvailable(): Promise<boolean> {
   try {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore - expo-secure-store is an optional peer dependency
     const SecureStore = await import('expo-secure-store').catch(() => null);
     if (!SecureStore) return false;
