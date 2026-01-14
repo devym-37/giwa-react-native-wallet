@@ -1,4 +1,4 @@
-# @giwa/react-native-wallet
+# giwa-react-native-wallet
 
 GIWA Chain SDK for React Native - Expo and React Native CLI compatible
 
@@ -19,13 +19,13 @@ GIWA Chain SDK for React Native - Expo and React Native CLI compatible
 
 ```bash
 # npm
-npm install @giwa/react-native-wallet expo-secure-store expo-local-authentication react-native-get-random-values
+npm install giwa-react-native-wallet expo-secure-store expo-local-authentication react-native-get-random-values
 
 # yarn
-yarn add @giwa/react-native-wallet expo-secure-store expo-local-authentication react-native-get-random-values
+yarn add giwa-react-native-wallet expo-secure-store expo-local-authentication react-native-get-random-values
 
 # pnpm
-pnpm add @giwa/react-native-wallet expo-secure-store expo-local-authentication react-native-get-random-values
+pnpm add giwa-react-native-wallet expo-secure-store expo-local-authentication react-native-get-random-values
 ```
 
 > **Tip**: You can also use `npx expo install` for automatic Expo SDK version compatibility.
@@ -34,13 +34,13 @@ pnpm add @giwa/react-native-wallet expo-secure-store expo-local-authentication r
 
 ```bash
 # npm
-npm install @giwa/react-native-wallet react-native-keychain react-native-get-random-values
+npm install giwa-react-native-wallet react-native-keychain react-native-get-random-values
 
 # yarn
-yarn add @giwa/react-native-wallet react-native-keychain react-native-get-random-values
+yarn add giwa-react-native-wallet react-native-keychain react-native-get-random-values
 
 # pnpm
-pnpm add @giwa/react-native-wallet react-native-keychain react-native-get-random-values
+pnpm add giwa-react-native-wallet react-native-keychain react-native-get-random-values
 ```
 
 ```bash
@@ -53,7 +53,7 @@ cd ios && pod install
 ### 1. Wrap your app with GiwaProvider
 
 ```tsx
-import { GiwaProvider } from '@giwa/react-native-wallet';
+import { GiwaProvider } from 'giwa-react-native-wallet';
 
 export default function App() {
   return (
@@ -67,7 +67,7 @@ export default function App() {
 ### 2. Create or recover a wallet
 
 ```tsx
-import { useGiwaWallet } from '@giwa/react-native-wallet';
+import { useGiwaWallet } from 'giwa-react-native-wallet';
 
 function WalletScreen() {
   const { wallet, createWallet, recoverWallet, isLoading } = useGiwaWallet();
@@ -102,7 +102,7 @@ function WalletScreen() {
 ### 3. Check balance
 
 ```tsx
-import { useBalance } from '@giwa/react-native-wallet';
+import { useBalance } from 'giwa-react-native-wallet';
 
 function BalanceScreen() {
   const { balance, formattedBalance, isLoading, refetch } = useBalance();
@@ -119,7 +119,7 @@ function BalanceScreen() {
 ### 4. Send transactions
 
 ```tsx
-import { useTransaction } from '@giwa/react-native-wallet';
+import { useTransaction } from 'giwa-react-native-wallet';
 
 function SendScreen() {
   const { sendTransaction, waitForReceipt, isLoading } = useTransaction();
@@ -141,7 +141,7 @@ function SendScreen() {
 ### 5. Use Flashblocks for fast confirmations
 
 ```tsx
-import { useFlashblocks } from '@giwa/react-native-wallet';
+import { useFlashblocks } from 'giwa-react-native-wallet';
 
 function FastTransactionScreen() {
   const { sendTransaction, getAverageLatency } = useFlashblocks();
@@ -166,7 +166,7 @@ function FastTransactionScreen() {
 ### 6. Resolve GIWA ID
 
 ```tsx
-import { useGiwaId } from '@giwa/react-native-wallet';
+import { useGiwaId } from 'giwa-react-native-wallet';
 
 function GiwaIdScreen() {
   const { resolveAddress, resolveName } = useGiwaId();
@@ -236,7 +236,7 @@ You can override default network endpoints:
 Access endpoints at runtime:
 
 ```tsx
-import { useNetworkInfo } from '@giwa/react-native-wallet';
+import { useNetworkInfo } from 'giwa-react-native-wallet';
 
 function MyComponent() {
   const { rpcUrl, flashblocksRpcUrl, flashblocksWsUrl, explorerUrl } = useNetworkInfo();
@@ -249,7 +249,7 @@ function MyComponent() {
 ### Check Network Status and Feature Availability
 
 ```tsx
-import { useNetworkInfo } from '@giwa/react-native-wallet';
+import { useNetworkInfo } from 'giwa-react-native-wallet';
 
 function NetworkStatus() {
   const {
@@ -349,10 +349,10 @@ module.exports = {
   preset: 'react-native',
   setupFilesAfterEnv: ['./jest.setup.js'],
   transformIgnorePatterns: [
-    'node_modules/(?!(react-native|@react-native|@giwa/react-native-wallet)/)',
+    'node_modules/(?!(react-native|@react-native|giwa-react-native-wallet)/)',
   ],
   moduleNameMapper: {
-    '^@giwa/react-native-wallet$': '<rootDir>/node_modules/@giwa/react-native-wallet/dist/index.js',
+    '^giwa-react-native-wallet$': '<rootDir>/node_modules/giwa-react-native-wallet/dist/index.js',
   },
 };
 ```
@@ -387,8 +387,8 @@ jest.mock('react-native-keychain', () => ({
 ```typescript
 // __tests__/wallet.test.ts
 import { renderHook, act } from '@testing-library/react-hooks';
-import { useGiwaWallet } from '@giwa/react-native-wallet';
-import { GiwaProvider } from '@giwa/react-native-wallet';
+import { useGiwaWallet } from 'giwa-react-native-wallet';
+import { GiwaProvider } from 'giwa-react-native-wallet';
 
 const wrapper = ({ children }) => (
   <GiwaProvider config={{ network: 'testnet' }}>
@@ -432,7 +432,7 @@ describe('useGiwaWallet', () => {
 ```typescript
 // __tests__/balance.test.ts
 import { renderHook, waitFor } from '@testing-library/react-hooks';
-import { useBalance } from '@giwa/react-native-wallet';
+import { useBalance } from 'giwa-react-native-wallet';
 
 // Mock viem client
 jest.mock('viem', () => ({
@@ -461,7 +461,7 @@ describe('useBalance', () => {
 ```typescript
 // __tests__/tokens.test.ts
 import { renderHook, act } from '@testing-library/react-hooks';
-import { useTokens } from '@giwa/react-native-wallet';
+import { useTokens } from 'giwa-react-native-wallet';
 
 describe('useTokens', () => {
   it('should transfer tokens', async () => {
@@ -494,7 +494,7 @@ describe('useTokens', () => {
 ```typescript
 // __tests__/giwaId.test.ts
 import { renderHook, act } from '@testing-library/react-hooks';
-import { useGiwaId } from '@giwa/react-native-wallet';
+import { useGiwaId } from 'giwa-react-native-wallet';
 
 describe('useGiwaId', () => {
   it('should resolve GIWA ID to address', async () => {
@@ -526,7 +526,7 @@ import {
   useGiwaWallet,
   useBalance,
   useTransaction,
-} from '@giwa/react-native-wallet';
+} from 'giwa-react-native-wallet';
 
 describe('Full Wallet Flow', () => {
   it('should complete full transaction flow', async () => {

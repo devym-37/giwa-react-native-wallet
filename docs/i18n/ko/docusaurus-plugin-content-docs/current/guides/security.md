@@ -101,7 +101,7 @@ const handleExportPrivateKey = async () => {
 ## Biometric Authentication
 
 ```tsx
-import { useBiometricAuth } from '@giwa/react-native-wallet';
+import { useBiometricAuth } from 'giwa-react-native-wallet';
 
 function SecureAction() {
   const { authenticate, isAvailable, biometryType } = useBiometricAuth();
@@ -130,7 +130,7 @@ function SecureAction() {
 ### Address Validation
 
 ```tsx
-import { GiwaError, ErrorCodes } from '@giwa/react-native-wallet';
+import { GiwaError, ErrorCodes } from 'giwa-react-native-wallet';
 
 const validateAndSend = async (to: string, amount: string) => {
   // 1. Validate address format
@@ -209,7 +209,7 @@ const ALLOWED_RPC_DOMAINS = [
 
 ```tsx
 // Verify known contract addresses
-import { CONTRACT_ADDRESSES, getContractAddresses } from '@giwa/react-native-wallet';
+import { CONTRACT_ADDRESSES, getContractAddresses } from 'giwa-react-native-wallet';
 
 const isOfficialContract = (address: string) => {
   const contracts = getContractAddresses('mainnet');

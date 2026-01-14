@@ -30,7 +30,7 @@ GIWA ID is an ENS-based naming service that allows you to use human-readable nam
 ## useGiwaId Hook
 
 ```tsx
-import { useGiwaId } from '@giwa/react-native-wallet';
+import { useGiwaId } from 'giwa-react-native-wallet';
 
 function GiwaIdScreen() {
   const {
@@ -148,7 +148,7 @@ const checkAvailability = async () => {
 ```tsx
 import { useState, useEffect } from 'react';
 import { View, Text, TextInput, Button, Image } from 'react-native';
-import { useGiwaId, useGiwaWallet } from '@giwa/react-native-wallet';
+import { useGiwaId, useGiwaWallet } from 'giwa-react-native-wallet';
 
 export function GiwaIdScreen() {
   const { wallet } = useGiwaWallet();

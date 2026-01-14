@@ -11,7 +11,7 @@ How to write unit tests for GIWA SDK Hooks.
 ```typescript
 // __tests__/hooks/useGiwaWallet.test.ts
 import { renderHook, act, waitFor } from '@testing-library/react-hooks';
-import { useGiwaWallet } from '@giwa/react-native-wallet';
+import { useGiwaWallet } from 'giwa-react-native-wallet';
 import { hookWrapper } from '../test-utils';
 
 describe('useGiwaWallet', () => {
@@ -128,7 +128,7 @@ describe('useGiwaWallet', () => {
 ```typescript
 // __tests__/hooks/useBalance.test.ts
 import { renderHook, waitFor } from '@testing-library/react-hooks';
-import { useBalance } from '@giwa/react-native-wallet';
+import { useBalance } from 'giwa-react-native-wallet';
 import { hookWrapper } from '../test-utils';
 
 // Mock setup
@@ -236,7 +236,7 @@ describe('useBalance', () => {
 ```typescript
 // __tests__/hooks/useTransaction.test.ts
 import { renderHook, act } from '@testing-library/react-hooks';
-import { useTransaction } from '@giwa/react-native-wallet';
+import { useTransaction } from 'giwa-react-native-wallet';
 import { hookWrapper } from '../test-utils';
 
 describe('useTransaction', () => {
@@ -300,7 +300,7 @@ describe('useTransaction', () => {
 ```typescript
 // __tests__/hooks/useTokens.test.ts
 import { renderHook, act } from '@testing-library/react-hooks';
-import { useTokens } from '@giwa/react-native-wallet';
+import { useTokens } from 'giwa-react-native-wallet';
 import { hookWrapper } from '../test-utils';
 
 const MOCK_TOKEN_ADDRESS = '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48';

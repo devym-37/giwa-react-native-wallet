@@ -15,7 +15,7 @@ import {
   useGiwaWallet,
   useBalance,
   GiwaProvider,
-} from '@giwa/react-native-wallet';
+} from 'giwa-react-native-wallet';
 import React from 'react';
 
 const wrapper = ({ children }: { children: React.ReactNode }) => (
@@ -65,7 +65,7 @@ import {
   useGiwaWallet,
   useBalance,
   useTransaction,
-} from '@giwa/react-native-wallet';
+} from 'giwa-react-native-wallet';
 
 describe('Transaction Flow', () => {
   const testMnemonic =
@@ -118,7 +118,7 @@ describe('Transaction Flow', () => {
 ```typescript
 // __tests__/integration/tokenFlow.test.ts
 import { renderHook, act, waitFor } from '@testing-library/react-hooks';
-import { useGiwaWallet, useTokens } from '@giwa/react-native-wallet';
+import { useGiwaWallet, useTokens } from 'giwa-react-native-wallet';
 
 const MOCK_TOKEN = '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48';
 const RECIPIENT = '0x0000000000000000000000000000000000000001';
@@ -193,7 +193,7 @@ describe('Token Flow', () => {
 ```typescript
 // __tests__/integration/giwaIdFlow.test.ts
 import { renderHook, act } from '@testing-library/react-hooks';
-import { useGiwaWallet, useGiwaId } from '@giwa/react-native-wallet';
+import { useGiwaWallet, useGiwaId } from 'giwa-react-native-wallet';
 
 describe('GIWA ID Flow', () => {
   it('should resolve name and address', async () => {
@@ -232,7 +232,7 @@ describe('GIWA ID Flow', () => {
 ```typescript
 // __tests__/integration/flashblocksFlow.test.ts
 import { renderHook, act } from '@testing-library/react-hooks';
-import { useGiwaWallet, useFlashblocks } from '@giwa/react-native-wallet';
+import { useGiwaWallet, useFlashblocks } from 'giwa-react-native-wallet';
 import { parseEther } from 'viem';
 
 describe('Flashblocks Flow', () => {
@@ -292,7 +292,7 @@ import {
   useTransaction,
   useTokens,
   useFaucet,
-} from '@giwa/react-native-wallet';
+} from 'giwa-react-native-wallet';
 
 describe('Full Wallet Flow', () => {
   it('should complete entire wallet lifecycle', async () => {

@@ -496,7 +496,7 @@ const finalReceipt = await result.wait();
    - Repetitive boilerplate code
    - Duplicated common logic for wallet management, transaction processing, etc.
 
-#### Solution: @giwa/react-native-wallet
+#### Solution: giwa-react-native-wallet
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
@@ -524,7 +524,7 @@ const finalReceipt = await result.wait();
 │                                                                  │
 │  App Code                                                        │
 │     │                                                            │
-│     └── @giwa/react-native-wallet                               │
+│     └── giwa-react-native-wallet                               │
 │              │                                                   │
 │              ├── useGiwaWallet()   → Wallet management           │
 │              ├── useBalance()      → Balance query               │
@@ -621,7 +621,7 @@ const name = await resolveName('0x...');
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                    @giwa/react-native-wallet                     │
+│                    giwa-react-native-wallet                     │
 │                                                                  │
 │  ┌───────────────────────┐    ┌───────────────────────┐         │
 │  │        Expo           │    │    React Native CLI   │         │
@@ -712,6 +712,6 @@ The SDK automatically detects the execution environment and uses the appropriate
 
 GIWA Chain is an Ethereum Layer 2 based on OP Stack that lowers the barrier to Web3 entry and provides infrastructure that anyone can easily use for blockchain applications.
 
-The `@giwa/react-native-wallet` SDK is designed to easily leverage GIWA Chain features in React Native apps. It abstracts complex blockchain integration logic and provides an intuitive Hook API that allows developers to focus on business logic.
+The `giwa-react-native-wallet` SDK is designed to easily leverage GIWA Chain features in React Native apps. It abstracts complex blockchain integration logic and provides an intuitive Hook API that allows developers to focus on business logic.
 
 Just as GIWA (traditional Korean roof tiles) are small pieces that together form a solid roof, we hope this SDK will serve as a foundation for various applications to flourish on top of the GIWA ecosystem.

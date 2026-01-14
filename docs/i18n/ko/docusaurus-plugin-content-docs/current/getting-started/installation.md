@@ -4,19 +4,19 @@ sidebar_position: 1
 
 # Installation
 
-@giwa/react-native-wallet은 Expo와 React Native CLI 프로젝트 모두를 지원합니다.
+giwa-react-native-wallet은 Expo와 React Native CLI 프로젝트 모두를 지원합니다.
 
 ## Expo Projects
 
 ```bash
 # npm
-npm install @giwa/react-native-wallet expo-secure-store
+npm install giwa-react-native-wallet expo-secure-store
 
 # yarn
-yarn add @giwa/react-native-wallet expo-secure-store
+yarn add giwa-react-native-wallet expo-secure-store
 
 # pnpm
-pnpm add @giwa/react-native-wallet expo-secure-store
+pnpm add giwa-react-native-wallet expo-secure-store
 ```
 
 :::tip
@@ -27,13 +27,13 @@ pnpm add @giwa/react-native-wallet expo-secure-store
 
 ```bash
 # npm
-npm install @giwa/react-native-wallet react-native-keychain
+npm install giwa-react-native-wallet react-native-keychain
 
 # yarn
-yarn add @giwa/react-native-wallet react-native-keychain
+yarn add giwa-react-native-wallet react-native-keychain
 
 # pnpm
-pnpm add @giwa/react-native-wallet react-native-keychain
+pnpm add giwa-react-native-wallet react-native-keychain
 ```
 
 ```bash

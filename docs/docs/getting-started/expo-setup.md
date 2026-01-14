@@ -10,13 +10,13 @@ This guide explains how to set up the GIWA SDK in an Expo project.
 
 ```bash
 # npm
-npm install @giwa/react-native-wallet expo-secure-store
+npm install giwa-react-native-wallet expo-secure-store
 
 # yarn
-yarn add @giwa/react-native-wallet expo-secure-store
+yarn add giwa-react-native-wallet expo-secure-store
 
 # pnpm
-pnpm add @giwa/react-native-wallet expo-secure-store
+pnpm add giwa-react-native-wallet expo-secure-store
 ```
 
 :::tip
@@ -30,7 +30,7 @@ You can also use `npx expo install` for automatic Expo SDK version compatibility
 Add `GiwaProvider` to the root of your app:
 
 ```tsx title="App.tsx"
-import { GiwaProvider } from '@giwa/react-native-wallet';
+import { GiwaProvider } from 'giwa-react-native-wallet';
 
 export default function App() {
   return (
@@ -45,7 +45,7 @@ export default function App() {
 
 ```tsx title="app/_layout.tsx"
 import { Stack } from 'expo-router';
-import { GiwaProvider } from '@giwa/react-native-wallet';
+import { GiwaProvider } from 'giwa-react-native-wallet';
 
 export default function RootLayout() {
   return (

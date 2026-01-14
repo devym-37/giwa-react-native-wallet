@@ -9,7 +9,7 @@ This guide explains wallet creation, recovery, and management features of the GI
 ## useGiwaWallet Hook
 
 ```tsx
-import { useGiwaWallet } from '@giwa/react-native-wallet';
+import { useGiwaWallet } from 'giwa-react-native-wallet';
 
 function WalletScreen() {
   const {
@@ -204,7 +204,7 @@ function WalletStatus() {
 ```tsx
 import { useState } from 'react';
 import { View, Text, Button, TextInput, Alert, ActivityIndicator } from 'react-native';
-import { useGiwaWallet } from '@giwa/react-native-wallet';
+import { useGiwaWallet } from 'giwa-react-native-wallet';
 
 export function WalletManager() {
   const {

@@ -11,7 +11,7 @@ API reference for all React Hooks provided by GIWA SDK.
 Wallet management Hook
 
 ```tsx
-import { useGiwaWallet } from '@giwa/react-native-wallet';
+import { useGiwaWallet } from 'giwa-react-native-wallet';
 
 const {
   wallet,           // GiwaWallet | null
@@ -67,7 +67,7 @@ interface SecureStorageOptions {
 ETH balance query Hook
 
 ```tsx
-import { useBalance } from '@giwa/react-native-wallet';
+import { useBalance } from 'giwa-react-native-wallet';
 
 const {
   balance,           // bigint (default 0n)
@@ -96,7 +96,7 @@ The initial value is `0n`, and null checks are not required.
 Transaction sending Hook
 
 ```tsx
-import { useTransaction } from '@giwa/react-native-wallet';
+import { useTransaction } from 'giwa-react-native-wallet';
 
 const {
   sendTransaction,  // (tx: TransactionRequest) => Promise<string>
@@ -139,7 +139,7 @@ interface WaitOptions {
 ERC-20 token management Hook
 
 ```tsx
-import { useTokens } from '@giwa/react-native-wallet';
+import { useTokens } from 'giwa-react-native-wallet';
 
 const {
   getBalance,    // (tokenAddress: string) => Promise<TokenBalance>
@@ -187,7 +187,7 @@ See: [GIWA Bridge Documentation](https://docs.giwa.io/tools/bridges)
 :::
 
 ```tsx
-import { useBridge } from '@giwa/react-native-wallet';
+import { useBridge } from 'giwa-react-native-wallet';
 
 const {
   withdrawETH,       // (amount: string, to?: Address) => Promise<Hash>
@@ -237,7 +237,7 @@ const time = getEstimatedWithdrawalTime(); // 604800 seconds
 Flashblocks (fast confirmation) Hook
 
 ```tsx
-import { useFlashblocks } from '@giwa/react-native-wallet';
+import { useFlashblocks } from 'giwa-react-native-wallet';
 
 const {
   sendTransaction,    // (tx: FlashblocksTx) => Promise<FlashblocksResult>
@@ -284,7 +284,7 @@ See: [GIWA ID Documentation](https://docs.giwa.io/giwa-ecosystem/giwa-id)
 :::
 
 ```tsx
-import { useGiwaId } from '@giwa/react-native-wallet';
+import { useGiwaId } from 'giwa-react-native-wallet';
 
 const {
   resolveAddress,    // (giwaId: string) => Promise<Address | null>
@@ -338,7 +338,7 @@ See: [Dojang Documentation](https://docs.giwa.io/giwa-ecosystem/dojang)
 :::
 
 ```tsx
-import { useDojang } from '@giwa/react-native-wallet';
+import { useDojang } from 'giwa-react-native-wallet';
 
 const {
   getAttestation,       // (uid: Hex) => Promise<Attestation | null>
@@ -414,7 +414,7 @@ See: [GIWA Faucet](https://faucet.giwa.io)
 :::
 
 ```tsx
-import { useFaucet } from '@giwa/react-native-wallet';
+import { useFaucet } from 'giwa-react-native-wallet';
 
 const {
   requestFaucet,    // (address?: Address) => Promise<void>
@@ -452,7 +452,7 @@ function FaucetButton() {
 Network status and feature availability Hook
 
 ```tsx
-import { useNetworkInfo } from '@giwa/react-native-wallet';
+import { useNetworkInfo } from 'giwa-react-native-wallet';
 
 const {
   network,              // 'testnet' | 'mainnet'
@@ -530,7 +530,7 @@ interface NetworkStatus {
 Biometric authentication Hook
 
 ```tsx
-import { useBiometricAuth } from '@giwa/react-native-wallet';
+import { useBiometricAuth } from 'giwa-react-native-wallet';
 
 const {
   isAvailable,       // boolean - Whether biometric hardware is available
@@ -568,7 +568,7 @@ interface BiometricCapability {
 ### Usage Example
 
 ```tsx
-import { useBiometricAuth } from '@giwa/react-native-wallet';
+import { useBiometricAuth } from 'giwa-react-native-wallet';
 import { Alert, Button, View, Text } from 'react-native';
 
 function SecureActionScreen() {

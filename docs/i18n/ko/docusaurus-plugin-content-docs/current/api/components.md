@@ -11,7 +11,7 @@ GIWA SDK에서 제공하는 React 컴포넌트에 대한 API 레퍼런스입니�
 GIWA SDK의 루트 Provider 컴포넌트입니다.
 
 ```tsx
-import { GiwaProvider } from '@giwa/react-native-wallet';
+import { GiwaProvider } from 'giwa-react-native-wallet';
 
 <GiwaProvider config={config}>
   {children}
@@ -102,7 +102,7 @@ interface GiwaConfig {
 GiwaProvider Context에 직접 접근하기 위한 Hook입니다.
 
 ```tsx
-import { useGiwaContext } from '@giwa/react-native-wallet';
+import { useGiwaContext } from 'giwa-react-native-wallet';
 
 const context = useGiwaContext();
 ```
@@ -232,7 +232,7 @@ import {
   GiwaProvider,
   AdapterFactory,
   type ISecureStorage,
-} from '@giwa/react-native-wallet';
+} from 'giwa-react-native-wallet';
 
 // Custom secure storage implementation
 class CustomSecureStorage implements ISecureStorage {

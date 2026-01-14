@@ -1,5 +1,5 @@
 {
-  "name": "@giwa/react-native-wallet",
+  "name": "giwa-react-native-wallet",
   "version": "0.1.0",
   "description": "GIWA Chain SDK for React Native - Expo and React Native CLI compatible",
   "main": "dist/index.js",

@@ -9,7 +9,7 @@ This guide explains how to send ETH and process transactions.
 ## useTransaction Hook
 
 ```tsx
-import { useTransaction } from '@giwa/react-native-wallet';
+import { useTransaction } from 'giwa-react-native-wallet';
 
 function TransactionScreen() {
   const {
@@ -110,7 +110,7 @@ const receipt = await waitForReceipt(hash, {
 ## Error Handling
 
 ```tsx
-import { GiwaTransactionError, ErrorCodes } from '@giwa/react-native-wallet';
+import { GiwaTransactionError, ErrorCodes } from 'giwa-react-native-wallet';
 
 try {
   await sendTransaction({ to, value });
@@ -141,7 +141,7 @@ try {
 ```tsx
 import { useState } from 'react';
 import { View, Text, TextInput, Button, Alert, ActivityIndicator } from 'react-native';
-import { useTransaction, useBalance } from '@giwa/react-native-wallet';
+import { useTransaction, useBalance } from 'giwa-react-native-wallet';
 
 export function SendScreen() {
   const [to, setTo] = useState('');

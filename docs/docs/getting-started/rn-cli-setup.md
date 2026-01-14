@@ -9,7 +9,7 @@ This guide explains how to set up the GIWA SDK in a React Native CLI project.
 ## Installation
 
 ```bash
-npm install @giwa/react-native-wallet react-native-keychain
+npm install giwa-react-native-wallet react-native-keychain
 
 # Install iOS dependencies
 cd ios && pod install && cd ..
@@ -62,7 +62,7 @@ buildscript {
 ### 1. GiwaProvider Configuration
 
 ```tsx title="App.tsx"
-import { GiwaProvider } from '@giwa/react-native-wallet';
+import { GiwaProvider } from 'giwa-react-native-wallet';
 
 export default function App() {
   return (
@@ -77,7 +77,7 @@ export default function App() {
 
 ```tsx title="App.tsx"
 import { NavigationContainer } from '@react-navigation/native';
-import { GiwaProvider } from '@giwa/react-native-wallet';
+import { GiwaProvider } from 'giwa-react-native-wallet';
 
 export default function App() {
   return (

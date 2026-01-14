@@ -500,7 +500,7 @@ const finalReceipt = await result.wait();
    - 반복되는 보일러플레이트 코드
    - 지갑 관리, 트랜잭션 처리 등의 공통 로직 중복
 
-#### Solution: @giwa/react-native-wallet
+#### Solution: giwa-react-native-wallet
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
@@ -528,7 +528,7 @@ const finalReceipt = await result.wait();
 │                                                                  │
 │  App Code                                                        │
 │     │                                                            │
-│     └── @giwa/react-native-wallet                               │
+│     └── giwa-react-native-wallet                               │
 │              │                                                   │
 │              ├── useGiwaWallet()   → 지갑 관리                   │
 │              ├── useBalance()      → 잔액 조회                   │
@@ -625,7 +625,7 @@ const name = await resolveName('0x...');
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                    @giwa/react-native-wallet                     │
+│                    giwa-react-native-wallet                     │
 │                                                                  │
 │  ┌───────────────────────┐    ┌───────────────────────┐         │
 │  │        Expo           │    │    React Native CLI   │         │
@@ -715,6 +715,6 @@ SDK는 실행 환경을 자동으로 감지하고 적절한 네이티브 모듈�
 
 GIWA Chain은 OP Stack 기반의 이더리움 Layer 2로, Web3 진입 장벽을 낮추고 누구나 쉽게 블록체인 애플리케이션을 사용할 수 있는 인프라를 제공합니다.
 
-`@giwa/react-native-wallet` SDK는 React Native 앱에서 GIWA Chain 기능을 쉽게 활용할 수 있도록 설계되었습니다. 복잡한 블록체인 통합 로직을 추상화하고, 개발자가 비즈니스 로직에 집중할 수 있도록 직관적인 Hook API를 제공합니다.
+`giwa-react-native-wallet` SDK는 React Native 앱에서 GIWA Chain 기능을 쉽게 활용할 수 있도록 설계되었습니다. 복잡한 블록체인 통합 로직을 추상화하고, 개발자가 비즈니스 로직에 집중할 수 있도록 직관적인 Hook API를 제공합니다.
 
 기와가 작은 조각들이 모여 견고한 지붕을 형성하듯이, 이 SDK가 GIWA 생태계 위에서 다양한 애플리케이션이 꽃필 수 있는 기반이 되기를 바랍니다.

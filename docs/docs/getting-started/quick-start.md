@@ -10,17 +10,17 @@ Create your first wallet with GIWA SDK in 5 minutes.
 
 ```bash
 # Expo
-npx expo install @giwa/react-native-wallet expo-secure-store
+npx expo install giwa-react-native-wallet expo-secure-store
 
 # React Native CLI
-npm install @giwa/react-native-wallet react-native-keychain
+npm install giwa-react-native-wallet react-native-keychain
 cd ios && pod install
 ```
 
 ## 2. Provider Setup
 
 ```tsx title="App.tsx"
-import { GiwaProvider } from '@giwa/react-native-wallet';
+import { GiwaProvider } from 'giwa-react-native-wallet';
 
 export default function App() {
   return (
@@ -70,7 +70,7 @@ See [Core API - Contract Addresses](/docs/api/core#default-contract-addresses) f
 
 ```tsx title="WalletDemo.tsx"
 import { View, Text, Button, Alert } from 'react-native';
-import { useGiwaWallet } from '@giwa/react-native-wallet';
+import { useGiwaWallet } from 'giwa-react-native-wallet';
 
 export function WalletDemo() {
   const { wallet, createWallet, isLoading } = useGiwaWallet();
@@ -115,7 +115,7 @@ export function WalletDemo() {
 ## 4. Check Balance
 
 ```tsx
-import { useBalance } from '@giwa/react-native-wallet';
+import { useBalance } from 'giwa-react-native-wallet';
 
 function BalanceDisplay() {
   const { formattedBalance, isLoading, refetch } = useBalance();
@@ -133,7 +133,7 @@ function BalanceDisplay() {
 
 ```tsx
 import { useState } from 'react';
-import { useTransaction } from '@giwa/react-native-wallet';
+import { useTransaction } from 'giwa-react-native-wallet';
 
 function SendETH() {
   const [to, setTo] = useState('');
@@ -175,7 +175,7 @@ function SendETH() {
 ## 6. Get Testnet ETH
 
 ```tsx
-import { useFaucet } from '@giwa/react-native-wallet';
+import { useFaucet } from 'giwa-react-native-wallet';
 
 function FaucetButton() {
   const { requestFaucet, isLoading } = useFaucet();
@@ -210,7 +210,7 @@ import {
   useBalance,
   useTransaction,
   useFaucet,
-} from '@giwa/react-native-wallet';
+} from 'giwa-react-native-wallet';
 
 function WalletApp() {
   const { wallet, createWallet, isLoading: walletLoading } = useGiwaWallet();

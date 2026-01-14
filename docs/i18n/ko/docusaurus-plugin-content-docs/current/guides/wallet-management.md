@@ -9,7 +9,7 @@ sidebar_position: 1
 ## useGiwaWallet Hook
 
 ```tsx
-import { useGiwaWallet } from '@giwa/react-native-wallet';
+import { useGiwaWallet } from 'giwa-react-native-wallet';
 
 function WalletScreen() {
   const {
@@ -163,7 +163,7 @@ function WalletStatus() {
 ```tsx
 import { useState } from 'react';
 import { View, Text, Button, TextInput, Alert } from 'react-native';
-import { useGiwaWallet } from '@giwa/react-native-wallet';
+import { useGiwaWallet } from 'giwa-react-native-wallet';
 
 export function WalletManager() {
   const {

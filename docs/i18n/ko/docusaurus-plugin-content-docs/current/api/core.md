@@ -11,7 +11,7 @@ GIWA SDK Core 모듈에 대한 API 레퍼런스입니다. 이 모듈들은 Hook 
 viem 기반 블록체인 클라이언트
 
 ```tsx
-import { GiwaClient } from '@giwa/react-native-wallet';
+import { GiwaClient } from 'giwa-react-native-wallet';
 
 const client = new GiwaClient({
   network: 'testnet',
@@ -63,7 +63,7 @@ client.getTransactionReceipt(hash: string): Promise<TransactionReceipt | null>
 지갑 생성 및 관리
 
 ```tsx
-import { WalletManager } from '@giwa/react-native-wallet';
+import { WalletManager } from 'giwa-react-native-wallet';
 
 const walletManager = new WalletManager(secureStorage, biometricAuth);
 ```
@@ -107,7 +107,7 @@ walletManager.hasWallet(): Promise<boolean>
 ERC-20 토큰 관리
 
 ```tsx
-import { TokenManager } from '@giwa/react-native-wallet';
+import { TokenManager } from 'giwa-react-native-wallet';
 
 const tokenManager = new TokenManager(publicClient, walletClient);
 ```
@@ -153,7 +153,7 @@ tokenManager.allowance(
 L1↔L2 브릿지 관리
 
 ```tsx
-import { BridgeManager } from '@giwa/react-native-wallet';
+import { BridgeManager } from 'giwa-react-native-wallet';
 
 const bridgeManager = new BridgeManager(l1Client, l2Client, walletClient);
 ```
@@ -200,7 +200,7 @@ bridgeManager.estimateFees(params: {
 Flashblocks 관리
 
 ```tsx
-import { FlashblocksManager } from '@giwa/react-native-wallet';
+import { FlashblocksManager } from 'giwa-react-native-wallet';
 
 const flashblocksManager = new FlashblocksManager(client, walletClient);
 ```
@@ -232,7 +232,7 @@ flashblocksManager.getAverageLatency(): number
 GIWA ID (ENS) 관리
 
 ```tsx
-import { GiwaIdManager } from '@giwa/react-native-wallet';
+import { GiwaIdManager } from 'giwa-react-native-wallet';
 
 const giwaIdManager = new GiwaIdManager(client);
 ```
@@ -269,7 +269,7 @@ giwaIdManager.setProfile(profile: Partial<Profile>): Promise<string>
 Dojang 증명 관리
 
 ```tsx
-import { DojangManager } from '@giwa/react-native-wallet';
+import { DojangManager } from 'giwa-react-native-wallet';
 
 const dojangManager = new DojangManager(client);
 ```
@@ -310,7 +310,7 @@ dojangManager.revokeAttestation(id: string): Promise<string>
 어댑터 팩토리
 
 ```tsx
-import { AdapterFactory, getAdapterFactory } from '@giwa/react-native-wallet';
+import { AdapterFactory, getAdapterFactory } from 'giwa-react-native-wallet';
 
 // Singleton instance
 const factory = getAdapterFactory();
@@ -376,7 +376,7 @@ interface CustomContracts {
 ### Usage Example
 
 ```tsx
-import { GiwaProvider } from '@giwa/react-native-wallet';
+import { GiwaProvider } from 'giwa-react-native-wallet';
 
 // Override specific contract addresses
 <GiwaProvider

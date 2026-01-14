@@ -184,7 +184,7 @@ function HomepageFeatures() {
 }
 
 function CodeExample() {
-  const codeString = `import { GiwaProvider, useGiwaWallet } from '@giwa/react-native-wallet';
+  const codeString = `import { GiwaProvider, useGiwaWallet } from 'giwa-react-native-wallet';
 
 export default function App() {
   return (
@@ -288,15 +288,15 @@ function InstallSection() {
             <div className={styles.installCommands}>
               <div className={styles.installCommandRow}>
                 <span className={styles.packageManager}>npm</span>
-                <code>npm install @giwa/react-native-wallet expo-secure-store</code>
+                <code>npm install giwa-react-native-wallet expo-secure-store</code>
               </div>
               <div className={styles.installCommandRow}>
                 <span className={styles.packageManager}>yarn</span>
-                <code>yarn add @giwa/react-native-wallet expo-secure-store</code>
+                <code>yarn add giwa-react-native-wallet expo-secure-store</code>
               </div>
               <div className={styles.installCommandRow}>
                 <span className={styles.packageManager}>pnpm</span>
-                <code>pnpm add @giwa/react-native-wallet expo-secure-store</code>
+                <code>pnpm add giwa-react-native-wallet expo-secure-store</code>
               </div>
             </div>
           </div>
@@ -312,15 +312,15 @@ function InstallSection() {
             <div className={styles.installCommands}>
               <div className={styles.installCommandRow}>
                 <span className={styles.packageManager}>npm</span>
-                <code>npm install @giwa/react-native-wallet react-native-keychain</code>
+                <code>npm install giwa-react-native-wallet react-native-keychain</code>
               </div>
               <div className={styles.installCommandRow}>
                 <span className={styles.packageManager}>yarn</span>
-                <code>yarn add @giwa/react-native-wallet react-native-keychain</code>
+                <code>yarn add giwa-react-native-wallet react-native-keychain</code>
               </div>
               <div className={styles.installCommandRow}>
                 <span className={styles.packageManager}>pnpm</span>
-                <code>pnpm add @giwa/react-native-wallet react-native-keychain</code>
+                <code>pnpm add giwa-react-native-wallet react-native-keychain</code>
               </div>
             </div>
           </div>

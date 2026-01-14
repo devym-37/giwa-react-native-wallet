@@ -28,7 +28,7 @@ Dojang is GIWA Chain's attestation service that connects on-chain wallet address
 ## useDojang Hook
 
 ```tsx
-import { useDojang } from '@giwa/react-native-wallet';
+import { useDojang } from 'giwa-react-native-wallet';
 
 function DojangScreen() {
   const {
@@ -127,7 +127,7 @@ const handleCheckVerified = async () => {
 ```tsx
 import { useState } from 'react';
 import { View, Text, TextInput, Button, Alert } from 'react-native';
-import { useDojang } from '@giwa/react-native-wallet';
+import { useDojang } from 'giwa-react-native-wallet';
 
 export function DojangScreen() {
   const {

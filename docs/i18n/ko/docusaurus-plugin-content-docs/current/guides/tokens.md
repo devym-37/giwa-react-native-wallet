@@ -9,7 +9,7 @@ sidebar_position: 3
 ## useTokens Hook
 
 ```tsx
-import { useTokens } from '@giwa/react-native-wallet';
+import { useTokens } from 'giwa-react-native-wallet';
 
 function TokensScreen() {
   const {
@@ -112,7 +112,7 @@ const checkAllowance = async () => {
 ```tsx
 import { useState, useEffect } from 'react';
 import { View, Text, TextInput, Button, FlatList, Alert } from 'react-native';
-import { useTokens } from '@giwa/react-native-wallet';
+import { useTokens } from 'giwa-react-native-wallet';
 
 // Known token list
 const KNOWN_TOKENS = [

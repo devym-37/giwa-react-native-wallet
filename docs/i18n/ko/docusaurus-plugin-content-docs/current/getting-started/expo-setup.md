@@ -10,13 +10,13 @@ sidebar_position: 2
 
 ```bash
 # npm
-npm install @giwa/react-native-wallet expo-secure-store
+npm install giwa-react-native-wallet expo-secure-store
 
 # yarn
-yarn add @giwa/react-native-wallet expo-secure-store
+yarn add giwa-react-native-wallet expo-secure-store
 
 # pnpm
-pnpm add @giwa/react-native-wallet expo-secure-store
+pnpm add giwa-react-native-wallet expo-secure-store
 ```
 
 :::tip
@@ -30,7 +30,7 @@ pnpm add @giwa/react-native-wallet expo-secure-store
 앱의 루트에 `GiwaProvider`를 추가하세요:
 
 ```tsx title="App.tsx"
-import { GiwaProvider } from '@giwa/react-native-wallet';
+import { GiwaProvider } from 'giwa-react-native-wallet';
 
 export default function App() {
   return (
@@ -45,7 +45,7 @@ export default function App() {
 
 ```tsx title="app/_layout.tsx"
 import { Stack } from 'expo-router';
-import { GiwaProvider } from '@giwa/react-native-wallet';
+import { GiwaProvider } from 'giwa-react-native-wallet';
 
 export default function RootLayout() {
   return (

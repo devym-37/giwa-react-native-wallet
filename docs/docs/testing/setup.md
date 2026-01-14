@@ -30,10 +30,10 @@ module.exports = {
     './jest.setup.js',
   ],
   transformIgnorePatterns: [
-    'node_modules/(?!(react-native|@react-native|@giwa/react-native-wallet)/)',
+    'node_modules/(?!(react-native|@react-native|giwa-react-native-wallet)/)',
   ],
   moduleNameMapper: {
-    '^@giwa/react-native-wallet$': '<rootDir>/node_modules/@giwa/react-native-wallet/dist/index.js',
+    '^giwa-react-native-wallet$': '<rootDir>/node_modules/giwa-react-native-wallet/dist/index.js',
   },
   testEnvironment: 'node',
   testMatch: ['**/__tests__/**/*.test.ts?(x)'],
@@ -135,7 +135,7 @@ jest.mock('viem', () => {
 // test-utils.tsx
 import React from 'react';
 import { render, RenderOptions } from '@testing-library/react-native';
-import { GiwaProvider } from '@giwa/react-native-wallet';
+import { GiwaProvider } from 'giwa-react-native-wallet';
 
 const TestWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => (
   <GiwaProvider config={{ network: 'testnet' }}>

@@ -29,15 +29,15 @@ GIWA Chain을 위한 React Native SDK입니다. Expo와 React Native CLI 프로�
 
 ```bash
 # Expo
-npx expo install @giwa/react-native-wallet expo-secure-store
+npx expo install giwa-react-native-wallet expo-secure-store
 
 # React Native CLI
-npm install @giwa/react-native-wallet react-native-keychain
+npm install giwa-react-native-wallet react-native-keychain
 cd ios && pod install
 ```
 
 ```tsx
-import { GiwaProvider, useGiwaWallet } from '@giwa/react-native-wallet';
+import { GiwaProvider, useGiwaWallet } from 'giwa-react-native-wallet';
 
 export default function App() {
   return (

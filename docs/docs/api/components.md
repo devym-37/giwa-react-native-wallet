@@ -11,7 +11,7 @@ API reference for React components provided by the GIWA SDK.
 Root Provider component for the GIWA SDK.
 
 ```tsx
-import { GiwaProvider } from '@giwa/react-native-wallet';
+import { GiwaProvider } from 'giwa-react-native-wallet';
 
 <GiwaProvider config={config}>
   {children}
@@ -102,7 +102,7 @@ interface GiwaConfig {
 Hook for direct access to the GiwaProvider Context.
 
 ```tsx
-import { useGiwaContext } from '@giwa/react-native-wallet';
+import { useGiwaContext } from 'giwa-react-native-wallet';
 
 const context = useGiwaContext();
 ```
@@ -232,7 +232,7 @@ import {
   GiwaProvider,
   AdapterFactory,
   type ISecureStorage,
-} from '@giwa/react-native-wallet';
+} from 'giwa-react-native-wallet';
 
 // Custom secure storage implementation
 class CustomSecureStorage implements ISecureStorage {

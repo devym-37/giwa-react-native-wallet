@@ -1,4 +1,4 @@
-// @giwa/react-native-wallet
+// giwa-react-native-wallet
 // GIWA Chain SDK for React Native - Expo and React Native CLI compatible
 
 // Crypto polyfill - MUST be first before any crypto operations

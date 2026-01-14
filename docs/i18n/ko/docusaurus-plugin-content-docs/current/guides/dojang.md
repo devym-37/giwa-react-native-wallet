@@ -28,7 +28,7 @@ Dojang은 온체인 지갑 주소와 오프체인 정보를 연결하는 GIWA Ch
 ## useDojang Hook
 
 ```tsx
-import { useDojang } from '@giwa/react-native-wallet';
+import { useDojang } from 'giwa-react-native-wallet';
 
 function DojangScreen() {
   const {
@@ -127,7 +127,7 @@ const handleCheckVerified = async () => {
 ```tsx
 import { useState } from 'react';
 import { View, Text, TextInput, Button, Alert } from 'react-native';
-import { useDojang } from '@giwa/react-native-wallet';
+import { useDojang } from 'giwa-react-native-wallet';
 
 export function DojangScreen() {
   const {

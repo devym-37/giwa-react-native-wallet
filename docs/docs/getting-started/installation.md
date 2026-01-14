@@ -4,25 +4,25 @@ sidebar_position: 1
 
 # Installation
 
-@giwa/react-native-wallet supports both Expo and React Native CLI projects.
+giwa-react-native-wallet supports both Expo and React Native CLI projects.
 
 ## Expo Projects
 
 ```bash
 # npm
-npm install @giwa/react-native-wallet expo-secure-store expo-local-authentication react-native-get-random-values
+npm install giwa-react-native-wallet expo-secure-store expo-local-authentication react-native-get-random-values
 
 # yarn
-yarn add @giwa/react-native-wallet expo-secure-store expo-local-authentication react-native-get-random-values
+yarn add giwa-react-native-wallet expo-secure-store expo-local-authentication react-native-get-random-values
 
 # pnpm
-pnpm add @giwa/react-native-wallet expo-secure-store expo-local-authentication react-native-get-random-values
+pnpm add giwa-react-native-wallet expo-secure-store expo-local-authentication react-native-get-random-values
 ```
 
 :::tip
 You can also use `npx expo install` for automatic Expo SDK version compatibility:
 ```bash
-npx expo install @giwa/react-native-wallet expo-secure-store expo-local-authentication react-native-get-random-values
+npx expo install giwa-react-native-wallet expo-secure-store expo-local-authentication react-native-get-random-values
 ```
 :::
 
@@ -30,13 +30,13 @@ npx expo install @giwa/react-native-wallet expo-secure-store expo-local-authenti
 
 ```bash
 # npm
-npm install @giwa/react-native-wallet react-native-keychain react-native-get-random-values
+npm install giwa-react-native-wallet react-native-keychain react-native-get-random-values
 
 # yarn
-yarn add @giwa/react-native-wallet react-native-keychain react-native-get-random-values
+yarn add giwa-react-native-wallet react-native-keychain react-native-get-random-values
 
 # pnpm
-pnpm add @giwa/react-native-wallet react-native-keychain react-native-get-random-values
+pnpm add giwa-react-native-wallet react-native-keychain react-native-get-random-values
 ```
 
 ```bash

@@ -15,7 +15,7 @@ See: [GIWA Bridge Documentation](https://docs.giwa.io/tools/bridges)
 ## useBridge Hook
 
 ```tsx
-import { useBridge } from '@giwa/react-native-wallet';
+import { useBridge } from 'giwa-react-native-wallet';
 
 function BridgeScreen() {
   const {
@@ -118,7 +118,7 @@ pendingTxs.forEach((tx) => {
 ```tsx
 import { useState } from 'react';
 import { View, Text, TextInput, Button, Alert, Linking } from 'react-native';
-import { useBridge, useBalance } from '@giwa/react-native-wallet';
+import { useBridge, useBalance } from 'giwa-react-native-wallet';
 
 export function BridgeScreen() {
   const [amount, setAmount] = useState('');

@@ -18,7 +18,7 @@ Flashblocks:           TX → Preconfirmation (200ms) → Block Confirmation (2-
 ## useFlashblocks Hook
 
 ```tsx
-import { useFlashblocks } from '@giwa/react-native-wallet';
+import { useFlashblocks } from 'giwa-react-native-wallet';
 
 function FastTransactionScreen() {
   const {
@@ -100,7 +100,7 @@ const checkAvailability = () => {
 ```tsx
 import { useState } from 'react';
 import { View, Text, TextInput, Button, Alert, Animated } from 'react-native';
-import { useFlashblocks, useBalance } from '@giwa/react-native-wallet';
+import { useFlashblocks, useBalance } from 'giwa-react-native-wallet';
 import { parseEther } from 'viem';
 
 export function FlashblocksScreen() {

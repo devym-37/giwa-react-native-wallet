@@ -11,7 +11,7 @@ GIWA SDK에서 제공하는 모든 React Hook에 대한 API 레퍼런스입니�
 지갑 관리 Hook
 
 ```tsx
-import { useGiwaWallet } from '@giwa/react-native-wallet';
+import { useGiwaWallet } from 'giwa-react-native-wallet';
 
 const {
   wallet,           // GiwaWallet | null
@@ -67,7 +67,7 @@ interface SecureStorageOptions {
 ETH 잔액 조회 Hook
 
 ```tsx
-import { useBalance } from '@giwa/react-native-wallet';
+import { useBalance } from 'giwa-react-native-wallet';
 
 const {
   balance,           // bigint (default 0n)
@@ -96,7 +96,7 @@ const {
 트랜잭션 전송 Hook
 
 ```tsx
-import { useTransaction } from '@giwa/react-native-wallet';
+import { useTransaction } from 'giwa-react-native-wallet';
 
 const {
   sendTransaction,  // (tx: TransactionRequest) => Promise<string>
@@ -139,7 +139,7 @@ interface WaitOptions {
 ERC-20 토큰 관리 Hook
 
 ```tsx
-import { useTokens } from '@giwa/react-native-wallet';
+import { useTokens } from 'giwa-react-native-wallet';
 
 const {
   getBalance,    // (tokenAddress: string) => Promise<TokenBalance>
@@ -187,7 +187,7 @@ L2→L1 Bridge 출금 Hook
 :::
 
 ```tsx
-import { useBridge } from '@giwa/react-native-wallet';
+import { useBridge } from 'giwa-react-native-wallet';
 
 const {
   withdrawETH,       // (amount: string, to?: Address) => Promise<Hash>
@@ -237,7 +237,7 @@ const time = getEstimatedWithdrawalTime(); // 604800 seconds
 Flashblocks (빠른 확인) Hook
 
 ```tsx
-import { useFlashblocks } from '@giwa/react-native-wallet';
+import { useFlashblocks } from 'giwa-react-native-wallet';
 
 const {
   sendTransaction,    // (tx: FlashblocksTx) => Promise<FlashblocksResult>
@@ -284,7 +284,7 @@ GIWA ID (up.id) 등록은 Upbit의 Verified Address 서비스를 통해서만 �
 :::
 
 ```tsx
-import { useGiwaId } from '@giwa/react-native-wallet';
+import { useGiwaId } from 'giwa-react-native-wallet';
 
 const {
   resolveAddress,    // (giwaId: string) => Promise<Address | null>
@@ -338,7 +338,7 @@ Dojang (EAS 증명) Hook
 :::
 
 ```tsx
-import { useDojang } from '@giwa/react-native-wallet';
+import { useDojang } from 'giwa-react-native-wallet';
 
 const {
   getAttestation,       // (uid: Hex) => Promise<Attestation | null>
@@ -414,7 +414,7 @@ Faucet은 테스트넷에서만 사용 가능합니다. 브라우저에서 공�
 :::
 
 ```tsx
-import { useFaucet } from '@giwa/react-native-wallet';
+import { useFaucet } from 'giwa-react-native-wallet';
 
 const {
   requestFaucet,    // (address?: Address) => Promise<void>
@@ -452,7 +452,7 @@ function FaucetButton() {
 네트워크 상태 및 기능 가용성 Hook
 
 ```tsx
-import { useNetworkInfo } from '@giwa/react-native-wallet';
+import { useNetworkInfo } from 'giwa-react-native-wallet';
 
 const {
   network,              // 'testnet' | 'mainnet'
