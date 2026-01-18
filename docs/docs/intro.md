@@ -9,14 +9,33 @@ React Native SDK for GIWA Chain. Works with both Expo and React Native CLI proje
 
 ## Key Features
 
-- **Wallet Management**: Create and recover wallets using mnemonic or private key
-- **ETH and ERC-20 Token Transfers**: Simple token transfer functionality
-- **L1↔L2 Bridge**: Asset movement between Ethereum mainnet and GIWA L2
-- **Flashblocks**: ~200ms fast transaction pre-confirmation
-- **GIWA ID**: ENS-based naming service (alice.giwa.id)
-- **Dojang**: EAS-based attestation service
-- **Secure Storage**: iOS Keychain / Android Keystore
-- **Biometric Authentication**: Face ID, Touch ID, Fingerprint support
+### ✅ Available Now
+
+| Feature | Hook | Description |
+|---------|------|-------------|
+| **Wallet Management** | `useGiwaWallet` | Create, recover, import, export wallets |
+| **Balance Query** | `useBalance` | Check ETH and token balances |
+| **Transactions** | `useTransaction` | Send ETH transactions |
+| **Token Operations** | `useTokens` | ERC-20 token transfers and queries |
+| **Flashblocks** | `useFlashblocks` | ~200ms fast preconfirmation |
+| **Dojang (EAS)** | `useDojang` | On-chain attestation service |
+| **Faucet** | `useFaucet` | Testnet ETH faucet |
+| **Network Info** | `useNetworkInfo` | Network status and feature availability |
+| **Biometric Auth** | `useBiometricAuth` | Face ID / Touch ID / Fingerprint |
+| **Secure Storage** | - | iOS Keychain / Android Keystore |
+
+### 🚧 Coming Soon (Contract Deployment Pending)
+
+These features are fully implemented in the SDK, but require smart contract deployment by the GIWA team.
+
+| Feature | Hook | Status | Official Docs |
+|---------|------|--------|---------------|
+| **L1 Bridge** | `useBridge` | L1 Bridge contract not deployed | [GIWA Docs](https://docs.giwa.io) |
+| **GIWA ID** | `useGiwaId` | ENS contracts not deployed | [GIWA Docs](https://docs.giwa.io) |
+
+:::tip Bridge Alternative
+For bridge operations, you can use [Superbridge](https://superbridge.app) in the meantime.
+:::
 
 ## Network Information
 
@@ -77,6 +96,7 @@ function WalletScreen() {
 | Resource             | URL                                                          |
 | -------------------- | ------------------------------------------------------------ |
 | GIWA Documentation   | [docs.giwa.io](https://docs.giwa.io)                         |
+| Sample App (GitHub)  | [giwa-react-native-samples](https://github.com/dev-eyoungmin/giwa-react-native-samples) |
 | Bridge (Superbridge) | [superbridge.app](https://superbridge.app)                   |
 | Faucet               | [faucet.giwa.io](https://faucet.giwa.io)                     |
 | Block Explorer       | [sepolia-explorer.giwa.io](https://sepolia-explorer.giwa.io) |

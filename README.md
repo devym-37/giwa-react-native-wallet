@@ -8,14 +8,33 @@ GIWA Chain SDK for React Native - Expo and React Native CLI compatible
 
 ## Features
 
-- Wallet creation and recovery (mnemonic/private key)
-- ETH and ERC-20 token transfers
-- L1↔L2 Bridge operations
-- Flashblocks (~200ms preconfirmation)
-- GIWA ID (ENS-based naming)
-- Dojang (EAS-based attestation)
-- Secure storage (iOS Keychain / Android Keystore)
-- Biometric authentication support
+### ✅ Available Now
+
+| Feature | Hook | Description |
+|---------|------|-------------|
+| **Wallet Management** | `useGiwaWallet` | Create, recover, import, export wallets |
+| **Balance Query** | `useBalance` | Check ETH and token balances |
+| **Transactions** | `useTransaction` | Send ETH transactions |
+| **Token Operations** | `useTokens` | ERC-20 token transfers and queries |
+| **Flashblocks** | `useFlashblocks` | ~200ms fast preconfirmation |
+| **Dojang (EAS)** | `useDojang` | On-chain attestation service |
+| **Faucet** | `useFaucet` | Testnet ETH faucet |
+| **Network Info** | `useNetworkInfo` | Network status and feature availability |
+| **Biometric Auth** | `useBiometricAuth` | Face ID / Touch ID / Fingerprint |
+| **Secure Storage** | - | iOS Keychain / Android Keystore |
+
+### 🚧 Coming Soon (Contract Deployment Pending)
+
+These features are fully implemented in the SDK, but require smart contract deployment by the GIWA team.
+
+| Feature | Hook | Status | Official Docs |
+|---------|------|--------|---------------|
+| **L1 Bridge** | `useBridge` | ENS contracts not deployed | [GIWA Docs](https://docs.giwa.io) |
+| **GIWA ID** | `useGiwaId` | L1 Bridge contract not deployed | [GIWA Docs](https://docs.giwa.io) |
+
+> 💡 **Note**: L2 Standard Bridge (`l2StandardBridge`) is available on OP Stack. Full L1↔L2 bridging requires L1 contract deployment.
+>
+> For bridge operations, you can use [Superbridge](https://superbridge.app) in the meantime.
 
 ## Installation
 
@@ -190,19 +209,21 @@ function GiwaIdScreen() {
 
 ### Hooks
 
-| Hook               | Description                                               |
-| ------------------ | --------------------------------------------------------- |
-| `useGiwaWallet`    | Wallet management (create, recover, import, export)       |
-| `useBalance`       | ETH balance queries                                       |
-| `useTransaction`   | Send ETH transactions                                     |
-| `useTokens`        | ERC-20 token operations                                   |
-| `useBridge`        | L1↔L2 bridge operations                                   |
-| `useFlashblocks`   | Fast preconfirmation transactions                         |
-| `useGiwaId`        | GIWA ID (ENS) resolution                                  |
-| `useDojang`        | Attestation verification                                  |
-| `useFaucet`        | Testnet faucet                                            |
-| `useNetworkInfo`   | Network status and feature availability                   |
-| `useBiometricAuth` | Biometric authentication (Face ID, Touch ID, Fingerprint) |
+| Hook               | Description                                               | Status |
+| ------------------ | --------------------------------------------------------- | ------ |
+| `useGiwaWallet`    | Wallet management (create, recover, import, export)       | ✅ |
+| `useBalance`       | ETH balance queries                                       | ✅ |
+| `useTransaction`   | Send ETH transactions                                     | ✅ |
+| `useTokens`        | ERC-20 token operations                                   | ✅ |
+| `useBridge`        | L1↔L2 bridge operations                                   | 🚧 |
+| `useFlashblocks`   | Fast preconfirmation transactions                         | ✅ |
+| `useGiwaId`        | GIWA ID (ENS) resolution                                  | 🚧 |
+| `useDojang`        | Attestation verification                                  | ✅ |
+| `useFaucet`        | Testnet faucet                                            | ✅ |
+| `useNetworkInfo`   | Network status and feature availability                   | ✅ |
+| `useBiometricAuth` | Biometric authentication (Face ID, Touch ID, Fingerprint) | ✅ |
+
+> 🚧 = Coming soon (contract deployment pending). See [GIWA Docs](https://docs.giwa.io) for updates.
 
 ### Configuration (All Optional)
 
@@ -631,6 +652,7 @@ npm test -- --watch
 | ------------------------ | --------------------------------------------------------- |
 | GIWA Documentation       | https://docs.giwa.io                                      |
 | SDK Documentation        | https://dev-eyoungmin.github.io/giwa-react-native-wallet/ |
+| Sample App (GitHub)      | https://github.com/dev-eyoungmin/giwa-react-native-samples |
 | Testnet Faucet           | https://faucet.giwa.io                                    |
 | Block Explorer (Testnet) | https://sepolia-explorer.giwa.io                          |
 | Block Explorer (Mainnet) | -                                                         |
